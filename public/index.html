@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Queue Cure '26</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Queue Cure '26</p>
+        <h1>Clinic Queue Console</h1>
+      </div>
+      <div class="sync-pill" id="syncStatus">Connecting...</div>
+    </header>
+
+    <main class="shell">
+      <section class="panel receptionist" aria-labelledby="receptionist-title">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Screen 1</p>
+            <h2 id="receptionist-title">Receptionist</h2>
+          </div>
+          <button class="primary" id="callNextBtn" type="button">Call Next</button>
+        </div>
+
+        <form class="patient-form" id="patientForm">
+          <label>
+            Patient name
+            <input name="name" autocomplete="name" placeholder="e.g. Kavya Rao" required />
+          </label>
+          <label>
+            Phone
+            <input name="phone" autocomplete="tel" inputmode="tel" placeholder="Optional" />
+          </label>
+          <label class="wide">
+            Concern
+            <input name="concern" placeholder="Optional note for doctor" />
+          </label>
+          <button type="submit">Add Patient</button>
+        </form>
+
+        <div class="settings-row">
+          <label>
+            Avg consultation time
+            <input id="avgTimeInput" min="1" max="120" type="number" />
+          </label>
+          <span>minutes per patient</span>
+        </div>
+
+        <div class="queue-stack">
+          <div class="section-title">
+            <h3>Waiting Queue</h3>
+            <span id="waitingCount">0 waiting</span>
+          </div>
+          <div class="queue-list" id="receptionQueue"></div>
+        </div>
+      </section>
+
+      <section class="panel waiting-room" aria-labelledby="waiting-room-title">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Screen 2</p>
+            <h2 id="waiting-room-title">Patient Waiting Room</h2>
+          </div>
+          <div class="clock" id="updatedAt">--</div>
+        </div>
+
+        <div class="now-serving">
+          <span>Now seeing</span>
+          <strong id="currentToken">--</strong>
+          <p id="currentName">No patient is currently with the doctor.</p>
+        </div>
+
+        <div class="tracker">
+          <label>
+            Track token
+            <select id="tokenSelect"></select>
+          </label>
+          <div class="estimate-grid">
+            <div>
+              <span>Tokens ahead</span>
+              <strong id="tokensAhead">--</strong>
+            </div>
+            <div>
+              <span>Estimated wait</span>
+              <strong id="estimatedWait">--</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="queue-stack">
+          <div class="section-title">
+            <h3>Live Token Board</h3>
+            <span id="servedCount">0 served</span>
+          </div>
+          <div class="token-board" id="patientBoard"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "queue-cure-26",
+  "version": "1.0.0",
+  "description": "Live clinic queue prototype for Queue Cure '26.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:4000": "node server.js --port=4000"
+  },
+  "keywords": [
+    "queue",
+    "clinic",
+    "hackathon",
+    "sse"
+  ],
+  "author": "",
+  "license": "MIT"
+}
